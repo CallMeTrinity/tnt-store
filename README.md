@@ -39,18 +39,18 @@ npm run icons     # regenerate the PWA PNG icons in public/icons/
 
 ## Deployment
 
-Pushing to `main` triggers `.github/workflows/deploy.yml`: build, then rsync `dist/` to your server over SSH.
+Pushing to `main` triggers `.github/workflows/deploy.yml`: build, then rsync `dist/` to the Infomaniak server over SSH (host `https://store.antoninpamart.fr`).
 
-Configure in the GitHub repo settings:
+Configured in the GitHub repo settings (already set via `gh`):
 
 | Type     | Name              | Value                                          |
 | -------- | ----------------- | ---------------------------------------------- |
-| Secret   | `SSH_HOST`        | server hostname/IP                             |
-| Secret   | `SSH_USER`        | SSH user                                       |
+| Secret   | `SSH_HOST`        | Infomaniak SSH host                            |
+| Secret   | `SSH_USER`        | Infomaniak SSH user                            |
 | Secret   | `SSH_PRIVATE_KEY` | private key (its public half in the server's `authorized_keys`) |
-| Variable | `DEPLOY_PATH`     | web root, e.g. `/var/www/tnt-store`            |
+| Variable | `DEPLOY_PATH`     | site root under `/home/clients/…/sites/store.antoninpamart.fr` |
 
-Server config: see `docs/nginx.conf.example` — the SPA fallback (`try_files … /index.html`) is required for deep links, and `sw.js`/`manifest.webmanifest` must be served with `no-cache`. **HTTPS is required** for the PWA to be installable.
+Server config: `public/.htaccess` is shipped with every build — it provides the SPA fallback for deep links, immutable caching for hashed assets, and `no-cache` for `sw.js`/`manifest.webmanifest`/`index.html`. **HTTPS is required** for the PWA to be installable (handled by Infomaniak).
 
 ## Stack
 
