@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="10" fill="#ff5c00"/>
+  <text x="32" y="41" font-family="Arial Black, Arial, sans-serif" font-size="22" font-weight="900" text-anchor="middle" fill="#0e0c0a">TNT</text>
+  <path d="M0 54h64v10H0z" fill="#0e0c0a" opacity=".9"/>
+  <path d="M8 64l10-10h8L16 64zM32 64l10-10h8L40 64zM56 64l8-8v8z" fill="#ff5c00"/>
+</svg>

@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@theme {
+  --color-coal-950: #0e0c0a;
+  --color-coal-900: #171411;
+  --color-coal-800: #221e19;
+  --color-coal-700: #322c25;
+  --color-coal-500: #5c5347;
+  --color-coal-400: #8a7f70;
+  --color-coal-300: #b0a596;
+  --color-coal-200: #d6cec2;
+  --color-coal-100: #ece7df;
+  --color-blaze-400: #ff8a3d;
+  --color-blaze-500: #ff5c00;
+  --color-blaze-600: #d94e00;
+  --font-display: "Big Shoulders Display", "Archivo", sans-serif;
+  --font-sans: "Archivo", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+html {
+  background: var(--color-coal-950);
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-coal-200);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* warning-tape motif used for the header rule and accents */
+.hazard {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-blaze-500) 0 14px,
+    var(--color-coal-950) 14px 28px
+  );
+}
+
+/* faint blueprint grid behind the inventory */
+.crate-grid {
+  background-image:
+    linear-gradient(var(--color-coal-800) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-coal-800) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent 70%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent 70%);
+}
+
+/* rendering for GitHub release notes (markdown) */
+.markdown {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--color-coal-300);
+  overflow-wrap: anywhere;
+}
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-coal-100);
+  margin: 1.25em 0 0.5em;
+}
+.markdown p {
+  margin: 0.6em 0;
+}
+.markdown ul,
+.markdown ol {
+  margin: 0.6em 0;
+  padding-left: 1.4em;
+}
+.markdown ul {
+  list-style: square;
+}
+.markdown ol {
+  list-style: decimal;
+}
+.markdown li {
+  margin: 0.25em 0;
+}
+.markdown li::marker {
+  color: var(--color-blaze-500);
+}
+.markdown a {
+  color: var(--color-blaze-400);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.markdown code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--color-coal-800);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+.markdown pre {
+  background: var(--color-coal-900);
+  border: 1px solid var(--color-coal-700);
+  padding: 0.75em 1em;
+  margin: 0.75em 0;
+  overflow-x: auto;
+  border-radius: 4px;
+}
+.markdown pre code {
+  background: none;
+  padding: 0;
+}
+.markdown blockquote {
+  border-left: 3px solid var(--color-blaze-600);
+  padding-left: 1em;
+  margin: 0.75em 0;
+  color: var(--color-coal-400);
+}
+.markdown hr {
+  border: 0;
+  border-top: 1px solid var(--color-coal-700);
+  margin: 1.25em 0;
+}
+.markdown img {
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+/* staggered card entrance */
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.card-in {
+  animation: card-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-in {
+    animation: none;
+  }
+}

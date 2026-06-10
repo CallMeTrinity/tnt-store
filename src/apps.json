@@ -1,0 +1,14 @@
+[
+  {
+    "owner": "TeamNewPipe",
+    "repo": "NewPipe",
+    "name": "NewPipe",
+    "description": "Example entry — replace with your own apps. A libre lightweight streaming front-end for Android."
+  },
+  {
+    "owner": "termux",
+    "repo": "termux-app",
+    "name": "Termux",
+    "description": "Example entry — replace with your own apps. Terminal emulator and Linux environment."
+  }
+]
