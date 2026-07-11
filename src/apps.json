@@ -4,5 +4,11 @@
     "repo": "villard-appli",
     "name": "Les Marmottes Appli",
     "description": "Version mobile du site villard.antoninpamart.fr"
+  },
+  {
+    "owner": "allegroconfuoco",
+    "repo": "mobile",
+    "name": "Fuoco",
+    "description": "Application mobile pour écouter sa musique locale"
   }
 ]
