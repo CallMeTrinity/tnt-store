@@ -10,5 +10,11 @@
     "repo": "mobile",
     "name": "Fuoco",
     "description": "Application mobile pour écouter sa musique locale"
+  },
+  {
+    "owner": "CallMeTrinity",
+    "repo": "kadens-mobile",
+    "name": "Kadens - Suivi de séances",
+    "description": "Application pour suivre ses séances de sport"
   }
 ]
