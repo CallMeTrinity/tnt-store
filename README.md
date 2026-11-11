@@ -6,7 +6,7 @@ Personal Android app store — a Vue 3 SPA/PWA that lists your own apps and serv
 
 - `src/apps.json` is the catalog: a list of public GitHub repos.
 - For each repo, the app calls the public GitHub Releases API in the browser and shows the latest version, release notes, version history, and every `.apk` asset with size/downloads, plus a QR code so you can scan a download link from your phone.
-- Release data is cached in `localStorage` (stale-while-revalidate, 10 min TTL) and by the service worker, so the store loads instantly and works offline with last-known data. APK files themselves are never cached.
+- Release data is cached in `localStorage` (stale-while-revalidate, 2 min TTL, re-checked whenever the app comes back to the foreground) and by the service worker, so the store loads instantly and works offline with last-known data. APK files themselves are never cached.
 - Unauthenticated GitHub API limit is 60 requests/hour/IP (1 request per repo per refresh) — plenty for personal use.
 
 ## Add an app

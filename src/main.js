@@ -11,11 +11,24 @@ registerSW({
   immediate: true,
   onRegisteredSW(swUrl, registration) {
     if (!registration) return
-    setInterval(async () => {
-      if (registration.installing || !navigator.onLine) return
-      const resp = await fetch(swUrl, { cache: 'no-store' })
-      if (resp.status === 200) await registration.update()
-    }, 60 * 1000)
+
+    const checkForUpdate = async () => {
+      if (registration.installing || !navigator.onLine || document.hidden) return
+      try {
+        const resp = await fetch(swUrl, { cache: 'no-store' })
+        if (resp.status === 200) await registration.update()
+      } catch {
+        // offline or server unreachable — the next check retries
+      }
+    }
+
+    setInterval(checkForUpdate, 60 * 1000)
+    // On mobile, reopening the installed PWA from the app switcher is not a
+    // navigation, and its timers were frozen while it sat in the background:
+    // check right away instead of waiting for the next interval tick.
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') checkForUpdate()
+    })
   },
 })
 
