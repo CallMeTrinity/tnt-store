@@ -4,6 +4,7 @@ import { useReleases } from '../composables/useReleases'
 import { formatBytes, formatDate } from '../utils'
 import AppIcon from './AppIcon.vue'
 import QrModal from './QrModal.vue'
+import ShareButton from './ShareButton.vue'
 
 const props = defineProps({
   app: { type: Object, required: true },
@@ -80,6 +81,7 @@ const showQr = ref(false)
             <path d="M14 14h3v3h-3zM21 14v0M14 21h0M18 18h3v3h-3z" />
           </svg>
         </button>
+        <ShareButton :app="app" />
       </div>
     </div>
 

@@ -4,6 +4,7 @@ import apps from '../apps.json'
 import { useReleases } from '../composables/useReleases'
 import AppIcon from '../components/AppIcon.vue'
 import ReleaseItem from '../components/ReleaseItem.vue'
+import ShareButton from '../components/ShareButton.vue'
 
 const props = defineProps({
   owner: { type: String, required: true },
@@ -26,12 +27,15 @@ const older = computed(() => state.releases.slice(1))
 
 <template>
   <div class="mx-auto max-w-3xl px-4 sm:px-6 pt-8 sm:pt-12">
-    <RouterLink
-      to="/"
-      class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-coal-400 hover:text-blaze-400 transition-colors"
-    >
-      <span aria-hidden="true">←</span> Inventory
-    </RouterLink>
+    <div class="flex items-center justify-between gap-4">
+      <RouterLink
+        to="/"
+        class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-coal-400 hover:text-blaze-400 transition-colors"
+      >
+        <span aria-hidden="true">←</span> Inventory
+      </RouterLink>
+      <ShareButton :app="app" label />
+    </div>
 
     <header class="mt-6 flex items-start gap-5">
       <AppIcon :app="app" size="size-20" />
